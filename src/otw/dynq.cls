@@ -8,7 +8,8 @@ ClassMethod prepareQ() As %Status
     If $$$ISERR(sc) {
         // here I want to capture the error details in trace , log , that I can see in production web page
         Try {
-            Do ##class(%SYS.System).WriteToConsoleLog("%ZSTART Routine: "_"Import Users",0,0)
+            Set x = $System.Status.GetOneStatusText(sc)
+            Do ##class(%SYS.System).WriteToConsoleLog("otw.dynq prepareQ: "_x)
         } Catch exception {
             Do BACK^%ETN // Log error in error log
         }
