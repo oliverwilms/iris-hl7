@@ -3,7 +3,7 @@ Class otw.NewProduction Extends Ens.Production
 
 XData ProductionDefinition
 {
-<Production Name="otw.NewProduction" LogGeneralTraceEvents="false">
+<Production Name="otw.NewProduction" LogGeneralTraceEvents="true">
   <Description></Description>
   <ActorPoolSize>2</ActorPoolSize>
   <Item Name="MsgRouter" Category="" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="This handles message routing logic." LogTraceEvents="false" Schedule="">
@@ -27,8 +27,10 @@ XData ProductionDefinition
   <Item Name="HL7FileOperation" Category="" ClassName="EnsLib.HL7.Operation.FileOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="This is a default HL7 File Operation." LogTraceEvents="false" Schedule="">
   </Item>
   <Item Name="JSONFileService" Category="" ClassName="EnsLib.File.PassthroughService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
-    <Setting Target="Host" Name="TargetConfigNames">MsgRouter</Setting>
+    <Setting Target="Host" Name="TargetConfigNames">JSON2HL7</Setting>
     <Setting Target="Adapter" Name="FilePath">/tmp/</Setting>
+  </Item>
+  <Item Name="JSON2HL7" Category="" ClassName="otw.bplJSON2HL7" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
   </Item>
 </Production>
 }
