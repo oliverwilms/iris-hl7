@@ -30,7 +30,7 @@ XData ProductionDefinition
     <Setting Target="Host" Name="TargetConfigNames">JSON2HL7</Setting>
     <Setting Target="Adapter" Name="FilePath">/tmp/</Setting>
   </Item>
-  <Item Name="JSON2HL7" Category="" ClassName="otw.bplJSON2HL7" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+  <Item Name="JSON2HL7" Category="" ClassName="otw.bplJSON2HL7" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
   </Item>
 </Production>
 }
