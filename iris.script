@@ -1,3 +1,7 @@
     // Unexpire passwords for dev mode
     zn "%SYS"
     Do ##class(Security.Users).UnExpireUserPasswords("*")
+
+    // install latest zpm version
+    zn "%SYS"
+    do $SYSTEM.OBJ.Load("/tmp/zpm.xml", "ck")
