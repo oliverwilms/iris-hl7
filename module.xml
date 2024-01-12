@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25">
+  <Document name="hl7.ZPM">
+    <Module>
+      <Name>hl7</Name>
+      <Version>0.0.1</Version>
+      <Description>hl7</Description>
+      <Packaging>module</Packaging>
+      <SourcesRoot>src</SourcesRoot>
+      <Resource Name="otw.PKG"/>
+      <FileCopy Name="hl7/" Target="${mgrdir}hl7/"/>
+    </Module>
+  </Document>
+</Export>
