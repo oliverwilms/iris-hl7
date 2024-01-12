@@ -1,0 +1,3 @@
+    // Unexpire passwords for dev mode
+    zn "%SYS"
+    Do ##class(Security.Users).UnExpireUserPasswords("*")
