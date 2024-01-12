@@ -14,6 +14,9 @@ COPY . app
 RUN chown -R ${ISC_PACKAGE_MGRUSER}:${ISC_PACKAGE_IRISGROUP} /opt/hl7xml
 USER ${ISC_PACKAGE_MGRUSER}
 
+# download latest zpm version
+RUN wget https://pm.community.intersystems.com/packages/zpm/latest/installer -O /tmp/zpm.xml
+
 # run iris.script
 WORKDIR /opt/hl7xml/app
 RUN iris start IRIS \
