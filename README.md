@@ -10,5 +10,5 @@ Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installi
 Open IRIS for Health installation with IPM client installed. Call in any namespace:
 
 ```
-USER>zpm "hl7"
+USER>zpm "install hl7"
 ```
