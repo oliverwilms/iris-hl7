@@ -2,8 +2,8 @@
 <Export generator="Cache" version="25">
   <Document name="iris-hl7.ZPM">
     <Module>
-      <Name>hl7</Name>
-      <Version>0.0.1</Version>
+      <Name>iris-hl7</Name>
+      <Version>0.0.2</Version>
       <Description>iris-hl7</Description>
       <Packaging>module</Packaging>
       <SourcesRoot>src</SourcesRoot>
