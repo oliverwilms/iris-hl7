@@ -183,7 +183,7 @@ Method toJSON(
 	id As %Integer,
 	baseDocType As %String,
 	ByRef schema = "",
-	pToDevice As %Boolean = 0) As %Status [ Internal ]
+	pToDevice As %Boolean = 0) As %DynamicObject [ Internal ]
 {
 #define APPEND(%x,%s) If +$G(pToDevice) { Write %s,! } Else { Do %x.WriteLine(%s) }
 #define BLDSCHEMA(%t,%x,%s) Do:'$D(%s(%t,%x)) ..buildSchema(%t,%x,.%s)
@@ -278,6 +278,7 @@ Method toJSON(
 	Set dObjSegment.sequence = dObjSequence
 	$$$APPEND(json,dObjSegment.%ToJSON())
 	//$$$APPEND(json,"</"_sstag_">")
+	Quit dObjSegment
 }
 
 }
