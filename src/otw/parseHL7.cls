@@ -50,6 +50,8 @@ ClassMethod zParseHL7() As %Status
 	#Dim pIOStream As %IO.I.CharacterStream = ##class(%Stream.GlobalCharacter).%New()
 	Set pToDevice = 0
 	Set dObjMessage = hl7.toJSON(.pIOStream,.schema,pToDevice)
+	Set tReturn = dObjMessage.%ToJSON()
+	Quit tReturn
 	Write dObjMessage.%ToJSON(),!
 	Quit $$$OK
 	Set pSegName = "*"
@@ -72,53 +74,4 @@ ClassMethod zParseHL7() As %Status
 	Quit $$$OK
 }
 
-/*
-ClassMethod SegmentToIOStream(
-	pIOStream As %IO.I.CharacterStream,
-	pSeparators As %String,
-	pSequenceNumber As %String = "",
-	pSegNum As %String,
-	pSegPath As %String,
-	pParentDoc As EnsLib.EDI.Document,
-	pIOFormatClassname As %String = "") As %Status
-{
-	Set tSeparators=$S(""=$G(pSeparators):..#Separators, 1:pSeparators)
-	Quit:""'=pIOFormatClassname&&$classmethod(pIOFormatClassname,"OutputSegment",$this,.tSC,pIOStream,tSeparators,.pSegNum,.pSegPath,.pParentDoc,.pSequenceNumber) tSC
-
-	Set tSegTerminator=$$$SEGTERM(tSeparators)  Set:""=tSegTerminator tSegTerminator=$C($$$HL7DefSegTerminatorAscii)
-	/*
-	If (..Name="MSH")&&(pSequenceNumber'="") {
-		Set tSeparators=$E(tSeparators,1,5)
-		If $E(tSeparators_$C(0,0,0,0),5)?1C {
-			Set tSeparators=$E(tSeparators,1,5)_$E($C(17,18,19,20),$L(tSeparators),4)
-			Set tShowSeparators=$ZStrip(tSeparators,">C")
-		} Else { Set tShowSeparators=tSeparators }
-
-		Set tFS=$$$FSSEP(tSeparators)
-		Do pIOStream.Write(..Name_tShowSeparators_..TC,0,.tSC)  Quit:$$$ISERR(tSC) tSC
-		For i=3:1:12 Do pIOStream.Write(tFS_..GetValueAt(i,tSeparators),0,.tSC)  Quit:$$$ISERR(tSC)
-		Quit:$$$ISERR(tSC) tSC
-		Do pIOStream.Write(tFS_pSequenceNumber,0,.tSC)  Quit:$$$ISERR(tSC) tSC
-		For i=14:1:..Count Do pIOStream.Write(tFS_..GetValueAt(i,tSeparators),0,.tSC)  Quit:$$$ISERR(tSC)
-		Do pIOStream.Write(tSegTerminator,0,.tSC)  Quit:$$$ISERR(tSC) tSC
-	} Else {
-		*/
-
-/*	Set data=..GetValueAt("",.pSeparators)
-		If data'="" {
-			If (..ID="")||$D(..DataArray)||'$D($$$vaSegmentExt(..ID,1)) {
-				Do pIOStream.Write(data_tSegTerminator,0,.tSC)  Quit:$$$ISERR(tSC) tSC
-			} Else {
-				Do pIOStream.Write(data,0,.tSC)  Quit:$$$ISERR(tSC) tSC
-				For i=1:1 { Quit:'$D($$$vaSegmentExt(..ID,i),data)
-					Do pIOStream.Write(data,0,.tSC)  Quit:$$$ISERR(tSC)
-				}
-				Quit:$$$ISERR(tSC) tSC
-				Do pIOStream.Write(tSegTerminator,0,.tSC)  Quit:$$$ISERR(tSC) tSC
-			}
-		}
-	/*}
-	Quit $$$OK
-}
-*/
 }
