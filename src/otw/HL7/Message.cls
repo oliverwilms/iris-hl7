@@ -49,11 +49,10 @@ Method getSegmentByIndex(
 	Quit tSegObj
 }
 
-/// Deprecated - to be removed
-Method toEasyXML(
+Method toJSON(
 	ByRef xml As %GlobalCharacterStream,
 	ByRef schema,
-	pToDevice As %Boolean = 0) As %Status
+	pToDevice As %Boolean = 0) As %DynamicObject
 {
 #define APPEND(%x,%s) If pToDevice { Write %s,! } Else { Do %x.WriteLine(%s) }
 
@@ -63,17 +62,21 @@ Method toEasyXML(
 	Set base = ..DocType
 	Set:base'="" base=$G($$$vaSchemaGbl($P(..DocType,":"),"base"))
 	Set:base="" base=$P(..DocType,":")
-	
+	Set dObjMessage = {}
+	set dObjMessage.Segment = ##class(%DynamicArray).%New()
 	$$$APPEND(xml,"<?xml version=""1.0"" encoding=""UTF-16""?>")
 	$$$APPEND(xml,"<"_name_" docType="""_$ZCVT($P(..DocType,":"),"O","XML")_""">")
 	For i = 1:1:..SegCount {
 		Set segment = ..getSegmentByIndex(i)
 		
-		Do segment.toEasyXML(.xml,i,base,.schema,pToDevice)
+		Set dObjSegment = segment.toJSON(.xml,i,base,.schema,pToDevice)
+		//Write dObjSegment.%ToJSON(),!
+		Do dObjMessage.Segment.%Push(dObjSegment)
 	}
 	$$$APPEND(xml,"</"_name_">")
 	Do:'pToDevice xml.Rewind()
-	Quit $$$OK
+	//Write dObjMessage.%ToJSON(),!
+	Quit dObjMessage
 }
 
 Storage Default
