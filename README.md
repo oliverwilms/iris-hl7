@@ -11,6 +11,16 @@ You can find [Online Demo](https://iris-hl7.demo.community.intersystems.com/csp/
 
 ![screenshot](https://github.com/oliverwilms/bilder/blob/main/iris-hl7.JPG)
 
+If your Productions is not running, click the Start button.
+
+HL7FileService is configured to process any file from /usr/irissys/mgr/hl7/ directory. Message Schema Category is set for HL7 2.3. HL7 messages are sent to BPL HL7 to JSON.
+
+Visual Trace below shows the HL7 message included in the repo and the conversion to JSON.
+The people who have been asked to persist HL7 messages expressed that it is easier for them to parse JSON rather than the delimited HL7.
+They provided a schema how they want to receive the HL7 messages converted into JSON.
+
+I did not want to create separate DTLs to transform individual HL7 message formats, but I created code that will transform any HL7 message into the desired JSON format.
+
 ![screenshot](https://github.com/oliverwilms/bilder/blob/main/iris-hl7_trace_hl7.JPG)
 
 ![screenshot](https://github.com/oliverwilms/bilder/blob/main/iris-hl7_trace_json.JPG)
