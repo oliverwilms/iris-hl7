@@ -23,6 +23,7 @@ XData ProductionDefinition
   <Item Name="HL7FileService" Category="" ClassName="EnsLib.HL7.Service.FileService" PoolSize="1" Enabled="true" Foreground="false" Comment="This is a default HL7 File Service." LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="TargetConfigNames">HL7 to JSON</Setting>
     <Setting Target="Adapter" Name="FilePath">/usr/irissys/mgr/hl7/</Setting>
+    <Setting Target="Host" Name="MessageSchemaCategory">2.3</Setting>
   </Item>
   <Item Name="HL7FileOperation" Category="" ClassName="EnsLib.HL7.Operation.FileOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="This is a default HL7 File Operation." LogTraceEvents="false" Schedule="">
   </Item>
