@@ -11,6 +11,10 @@ You can find [Online Demo](https://iris-hl7.demo.community.intersystems.com/csp/
 
 ![screenshot](https://github.com/oliverwilms/bilder/blob/main/iris-hl7.JPG)
 
+![screenshot](https://github.com/oliverwilms/bilder/blob/main/iris-hl7_trace_hl7.JPG)
+
+![screenshot](https://github.com/oliverwilms/bilder/blob/main/iris-hl7_trace_json.JPG)
+
 ## Prerequisites
 Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Docker desktop](https://www.docker.com/products/docker-desktop) installed.
 
