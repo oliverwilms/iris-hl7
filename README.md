@@ -9,6 +9,8 @@ iris-hl7 transforms a HL7 messages to JSON
 
 You can find [Online Demo](https://iris-hl7.demo.community.intersystems.com/csp/user/EnsPortal.ProductionConfig.zen?PRODUCTION=otw.NewProduction&$NAMESPACE=USER) here.
 
+![screenshot](https://github.com/oliverwilms/bilder/blob/main/iris-hl7.JPG)
+
 ## Prerequisites
 Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Docker desktop](https://www.docker.com/products/docker-desktop) installed.
 
