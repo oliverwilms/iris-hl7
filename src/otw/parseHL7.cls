@@ -5,7 +5,7 @@ Class otw.parseHL7
 
 Parameter Category = 2.3;
 
-Parameter DEBUG As COSEXPRESSION = 2;
+Parameter DEBUG = 0;
 
 Parameter Separators = "|~^\&";
 
@@ -24,6 +24,19 @@ ClassMethod DebugTEST(strMessage As %String = "") As %Status
     If ..#DEBUG = 0 Quit $$$OK
 	Set ^TESTutil($I(^TESTutil)) = $ZDateTime($NOW(),8,1,3)_" : "_$JOB_" : "_strMessage
 	Quit $$$OK
+}
+
+ClassMethod StatusToText(pStatus As %Status) As %String
+{
+	Set tReturn = $System.Status.GetOneErrorText(pStatus)
+	Quit tReturn
+}
+
+ClassMethod DebugStatus(pStatus As %Status) As %Status
+{
+    If ..#DEBUG = 0 Quit $$$OK
+	Set tStatus = ..StatusToText(pStatus)
+	Quit ..DebugTEST(tStatus)
 }
 
 ClassMethod hl7ToJSONStreamContainer(ByRef hl7 As EnsLib.HL7.Message) As Ens.StreamContainer
@@ -46,6 +59,7 @@ ClassMethod hl7ToJSONStreamContainer(ByRef hl7 As EnsLib.HL7.Message) As Ens.Str
 	Set tStreamContainer = ##class(Ens.StreamContainer).%New()
 	Set tStreamContainer.Stream = ##class(%Stream.GlobalCharacter).%New()
 	Set tSC = tStreamContainer.Stream.Write(tReturn)
+	If $$$ISERR(tSC) Do ..DebugStatus(tSC)
 	Quit tStreamContainer
 }
 
@@ -59,13 +73,14 @@ ClassMethod SegmentToJSON(ByRef hl7Seg As EnsLib.HL7.Segment, id As %Integer, ba
 	$$$SETTYPE(sstype,hl7Seg.DocType,baseDocType)
 	Set sstag   = $ZCVT($P(sstype,":",2),"O","XML")
 	Set type    = $ZCVT($P(sstype,":"),"O","XML")
-
+	Do ..DebugTEST("type = "_type)
 	$$$BLDSCHEMA("SS",sstype,schema)
 	
 	Set dObjSequence = {}
 
 	Set pData = $$$vaSegment(hl7Seg.ID)	
 	Set FS=$E(pData,1), CS=$E(pData,2), RS=$E(pData,3), ESC=$E(pData,4), SS=$E(pData,5), data1=$E(pData,6,*)
+	Do ..DebugTEST("ESC = "_ESC)
 	//Set offset = $S(..Name="MSH":0,1:1)
 	Set offset = 1
 	For i=1+offset:1:$L(data1,FS) {
@@ -147,7 +162,7 @@ ClassMethod SegmentToJSON(ByRef hl7Seg As EnsLib.HL7.Segment, id As %Integer, ba
 ClassMethod toJSON(ByRef hl7 As EnsLib.HL7.Message, ByRef schema, pToDevice As %Boolean = 0) As %String
 {
 	Do ..DebugTEST("toJSON")
-	Set name = $ZCVT(hl7.GetMsgType(hl7.Name),"O","XML")
+	//Set name = $ZCVT(hl7.GetMsgType(hl7.Name),"O","XML")
 	Set base = hl7.DocType
 	Set:base'="" base=$G($$$vaSchemaGbl($P(hl7.DocType,":"),"base"))
 	Set:base="" base=$P(hl7.DocType,":")
