@@ -3,11 +3,23 @@
   <Document name="iris-hl7.ZPM">
     <Module>
       <Name>iris-hl7</Name>
-      <Version>0.0.5</Version>
+      <Version>0.0.6</Version>
       <Description>iris-hl7</Description>
       <Packaging>module</Packaging>
       <SourcesRoot>src</SourcesRoot>
       <Resource Name="otw.PKG"/>
+      <CSPApplication
+        Name="/hl7"
+        Directory="${cspdir}/hl7"
+        Url="/hl7/api"
+        DispatchClass="EnsLib.HL7.Service.HTTPService"
+        MatchRoles=":${dbrole}:%All"
+        Recurse="1"
+        ServeFiles="1"
+        UnauthenticatedEnabled="1"
+        PasswordAuthEnabled="0"
+        UseSessionCookie="2"
+      />
       <FileCopy Name="hl7/" Target="${mgrdir}hl7/"/>
     </Module>
   </Document>
