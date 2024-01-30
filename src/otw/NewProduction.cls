@@ -20,7 +20,7 @@ XData ProductionDefinition
   </Item>
   <Item Name="PagerAlert" Category="" ClassName="EnsLib.EMail.AlertOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="This sends alerts to a pager via e-mail." LogTraceEvents="false" Schedule="">
   </Item>
-  <Item Name="HL7 HTTP Service" Category="" ClassName="EnsLib.HL7.Service.HTTPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
+  <Item Name="EnsLib.HL7.Service.HTTPService" Category="" ClassName="EnsLib.HL7.Service.HTTPService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
     <Setting Target="Host" Name="MessageSchemaCategory">2.3</Setting>
     <Setting Target="Host" Name="EnableStandardRequests">1</Setting>
     <Setting Target="Host" Name="TargetConfigNames">HL7 to JSON</Setting>
