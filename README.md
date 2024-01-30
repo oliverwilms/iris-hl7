@@ -5,7 +5,7 @@
 # iris-hl7
 
 ## Description
-iris-hl7 transforms a HL7 messages to JSON
+iris-hl7 transforms HL7 messages to JSON
 
 You can find [Online Demo](https://iris-hl7.demo.community.intersystems.com/csp/user/EnsPortal.ProductionConfig.zen?PRODUCTION=otw.NewProduction&$NAMESPACE=USER) here.
 
@@ -28,18 +28,7 @@ I did not want to create separate DTLs to transform individual HL7 message forma
 ## Test it out
 
 Please add Operation to your Production like this:
-
-```
- <Item Name="HL7demo HTTP Operation" Category="" ClassName="EnsLib.HTTP.GenericOperation" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
-    <Setting Target="Adapter" Name="HTTPPort">443</Setting>
-    <Setting Target="Adapter" Name="HTTPServer">iris-hl7.demo.community.intersystems.com</Setting>
-    <Setting Target="Host" Name="ArchiveIO">1</Setting>
-    <Setting Target="Adapter" Name="SSLConfig">ISC.FeatureTracker.SSL.Config</Setting>
-    <Setting Target="Adapter" Name="URL">/hl7/api/</Setting>
-    <Setting Target="Adapter" Name="SSLCheckServerIdentity">0</Setting>
-  </Item>
-```
-
+![screenshot](https://github.com/oliverwilms/bilder/blob/main/HL7demo_HTTP_Operation.PNG)
 Send a 2.3 HL7 message and check the Message Viewer in [Online Demo](https://iris-hl7.demo.community.intersystems.com/csp/user/EnsPortal.MessageViewer.zen) here.
 
 ## Prerequisites
