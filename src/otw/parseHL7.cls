@@ -81,8 +81,8 @@ ClassMethod SegmentToJSON(ByRef hl7Seg As EnsLib.HL7.Segment, id As %Integer, ba
 	Set pData = $$$vaSegment(hl7Seg.ID)	
 	Set FS=$E(pData,1), CS=$E(pData,2), RS=$E(pData,3), ESC=$E(pData,4), SS=$E(pData,5), data1=$E(pData,6,*)
 	Do ..DebugTEST("ESC = "_ESC)
-	//Set offset = $S(..Name="MSH":0,1:1)
-	Set offset = 1
+	Set tName = $Piece(data1,FS,1)
+	Set offset = $S(tName="MSH":0,1:1)
 	For i=1+offset:1:$L(data1,FS) {
 
 		Set idx = i - offset
@@ -90,7 +90,7 @@ ClassMethod SegmentToJSON(ByRef hl7Seg As EnsLib.HL7.Segment, id As %Integer, ba
 		// Process each field in turn
 		Set data2=$P(data1,FS,i)
 		If data2'="" {
-			Do dObjSequence.%Set(i-1,data2)
+			Do dObjSequence.%Set(idx,data2)
 			Continue
 			// Generate a wrapping tag for this field
 			If $D(schema("SS",sstype,idx)) {
