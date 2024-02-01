@@ -3,7 +3,7 @@
   <Document name="iris-hl7.ZPM">
     <Module>
       <Name>iris-hl7</Name>
-      <Version>0.0.7</Version>
+      <Version>0.0.8</Version>
       <Description>iris-hl7</Description>
       <Packaging>module</Packaging>
       <SourcesRoot>src</SourcesRoot>
@@ -21,6 +21,9 @@
         UseSessionCookie="2"
       />
       <FileCopy Name="hl7/" Target="${mgrdir}hl7/"/>
+      <Invoke Class="Ens.Director" Method="SetAutoStart">
+        <Arg>otw.NewProduction</Arg>
+      </Invoke>
     </Module>
   </Document>
 </Export>
