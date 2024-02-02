@@ -12,7 +12,12 @@ ClassMethod jsonschema() As %Status
     Set json = dobj.%ToJSON
     Set schema = ##class(Feeder.Util).ReadJsonFile(path)
     zw schema
-    Set js = ##class(%SYS.Python).Import("jsonschema")
+    Try {
+        Set js = ##class(%SYS.Python).Import("jsonschema")
+    }
+    Catch exception {
+        zw exception
+    }
     Do js.validate(json, schema)
     Quit tSC
 }
