@@ -7,7 +7,7 @@
 ## Description
 iris-hl7 transforms HL7 messages to JSON
 
-You can find [Online Demo](https://iris-hl7.demo.community.intersystems.com/csp/user/EnsPortal.ProductionConfig.zen?PRODUCTION=otw.NewProduction&$NAMESPACE=USER) here.
+You can find [Online Demo](https://iris-hl7.demo.community.intersystems.com/csp/user/EnsPortal.ProductionConfig.zen?PRODUCTION=otw.NewProduction&$NAMESPACE=USER) here or [webterminal](https://iris-hl7.demo.community.intersystems.com/terminal/).
 
 ![screenshot](https://github.com/oliverwilms/bilder/blob/main/iris-hl7.JPG)
 
