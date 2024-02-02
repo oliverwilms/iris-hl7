@@ -19,6 +19,7 @@ RUN wget https://pm.community.intersystems.com/packages/zpm/latest/installer -O 
 
 # run iris.script
 WORKDIR /opt/hl7xml/app
-RUN iris start IRIS \
+RUN pip3 install -r requirements.txt && \
+  iris start IRIS \
     && iris session IRIS < iris.script \
     && iris stop IRIS quietly
