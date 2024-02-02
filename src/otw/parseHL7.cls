@@ -57,7 +57,6 @@ ClassMethod hl7ToJSONStreamContainer(ByRef hl7 As EnsLib.HL7.Message) As Ens.Str
 	//Set name = $ZCVT(hl7.GetMsgType(hl7.Name),"O","XML")
 	Set pToDevice = 0
 	Set tReturn = ..toJSON(.hl7,.schema,pToDevice)
-	//Do ..DebugTEST(tReturn)
 	Set tStreamContainer = ##class(Ens.StreamContainer).%New()
 	Set tStreamContainer.Stream = ##class(%Stream.GlobalCharacter).%New()
 	Set tSC = tStreamContainer.Stream.Write(tReturn)
