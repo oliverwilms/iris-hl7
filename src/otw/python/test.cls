@@ -1,5 +1,5 @@
 /// https://github.com/intersystems-community/iris-embedded-python-template/blob/master/src/dc/python/test.cls
-Class dc.python.test
+Class otw.python.test
 {
 
 ClassMethod jsonschema() As %Status
