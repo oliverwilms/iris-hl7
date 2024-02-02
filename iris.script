@@ -5,7 +5,7 @@
     // install latest zpm version
     zn "%SYS"
     do $SYSTEM.OBJ.Load("/tmp/zpm.xml", "ck")
-
+    zpm "install webterminal"
     zn "USER"
     zpm "load /opt/hl7xml/app/ -v":1
     halt
