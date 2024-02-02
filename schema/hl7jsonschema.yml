@@ -1,0 +1,122 @@
+%YAML 1.1
+---
+$schema: "http://stsci.edu/schemas/yaml-schema/draft-01"
+id: "http://va.gov/hl7tojson/schema"
+tag: "tag:va.gov:hl7tojso/v2/schema"
+title: |
+  Schema for JSON representing hl7 messages to be stored in a relational database.
+description: |
+  This schema is for JSON representing an hl7 message plus identifying properties.
+examples:
+  - |
+    {
+        "message_type": "OSQ",
+        "message_event_type": "Q06",
+        "message_activity_type": "Quantity On Hand Query",
+        "hl7_version": "2.3",
+        "site_id": "XXXX",
+        "segment": [
+            {
+                "name": "MSH",
+                "sequence": {
+                    "1": "|",
+                    "2": "",
+                    "3": "PRCP_SS_VISTA"
+                }
+            },
+            {
+                "name": "QRD",
+                "sequence": {
+                    "1": "YYYYMMDDHHMMSS",
+                    "2": "R",
+                    "3": "D"
+                }
+            },
+            {
+                "name": "QRF",
+                "sequence": {
+                    "1": "Supply Station",
+                    "2": "YYYYMMDDHHMMSS",
+                    "3": "YYYYMMDDHHMMSS"     
+                }       
+            }
+        ]
+    }
+    message_type: OSQ
+    message_event_type: Q06
+    message_activity_type: Quantity On Hand Query
+    hl7_version: '2.3'
+    site_id: "XXXX"
+    segment:
+    - name: MSH
+      sequence:
+        '1': "|"
+        '2': ''
+        '3': PRCP_SS_VISTA
+    - name: QRD
+      sequence:
+        '1': YYYYMMDDHHMMSS
+        '2': R
+        '3': D
+    - name: QRF
+      sequence:
+        '1': Supply Station
+        '2': YYYYMMDDHHMMSS
+        '3': YYYYMMDDHHMMSS
+type: object
+properties:
+  message_type:
+    type: string
+    pattern: "^[\\w]{3}$"
+    description: |
+      The three character message type identifier.
+  message_event_type:
+    type: string
+    pattern: "^[\\w]{3}$"
+    description: |
+      The three character message event type identifier.
+  message_activity_type:
+    type: string
+    description: |
+      The enumerated message activity type derived from:
+      mesage type
+      message event type
+      hl7 version
+      sequences present in message
+  hl7_version:
+    type: string
+    pattern: "^[\\w]{1,7}$"
+    description: |
+      The hl7 version. Probably 2.3 or 2.6.
+  site_id:
+    type: string
+    pattern: "^[\\w]{1,5}$"
+    description: |
+      The site id of the message sender.
+      Probably three numeric characters followed by an alpha character.
+      Can be derived from MSH sequence 4, sending facility.
+      MSH sequence 6 is for receiving facility.
+  segment:
+    type: array
+    description: |
+      A list of the included segments.
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+          pattern: "^[\\w]{3}$"
+          description: |
+            The three character segment name.
+        sequence:
+          type: array
+          description: |
+            A map of all the entries in the segment.
+          items:
+            type: string
+            pattern: "^['"]*[\\d]+['"]*:['"]*.+['"]*$"
+            description: |
+              Key Value pairs separated by a colon. Key is a sequence number.
+              Don't include sequence number if the value is null.
+required: [message_type, message_event_type, message_activity_type, hl7_version, segment]
+additionalProperties: false
