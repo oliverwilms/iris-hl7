@@ -21,6 +21,7 @@
         UseSessionCookie="2"
       />
       <FileCopy Name="hl7/" Target="${mgrdir}hl7/"/>
+      <FileCopy Name="schema/" Target="${mgrdir}schema/"/>
       <Invoke Class="Ens.Director" Method="SetAutoStart">
         <Arg>otw.NewProduction</Arg>
       </Invoke>
