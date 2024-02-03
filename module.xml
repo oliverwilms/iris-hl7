@@ -3,7 +3,7 @@
   <Document name="iris-hl7.ZPM">
     <Module>
       <Name>iris-hl7</Name>
-      <Version>0.0.8</Version>
+      <Version>0.0.9</Version>
       <Description>iris-hl7</Description>
       <Packaging>module</Packaging>
       <SourcesRoot>src</SourcesRoot>
@@ -23,6 +23,9 @@
       <FileCopy Name="hl7/" Target="${mgrdir}hl7/"/>
       <FileCopy Name="schema/" Target="${mgrdir}schema/"/>
       <Invoke Class="Ens.Director" Method="SetAutoStart">
+        <Arg>otw.NewProduction</Arg>
+      </Invoke>
+      <Invoke Class="Ens.Director" Method="StartProduction">
         <Arg>otw.NewProduction</Arg>
       </Invoke>
     </Module>
