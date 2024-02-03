@@ -27,7 +27,16 @@ I did not want to create separate DTLs to transform individual HL7 message forma
 
 ## Schema Validation using Embedded Python
 
-## Test it out
+Go to webterminal
+```
+ZN "USER"
+```
+
+```
+do ##class(otw.python.test).jsonschema()
+```
+
+## Test it out - Send HL7 messages to Online Demo Server
 
 Please add Operation to your Production like this:
 ![screenshot](https://github.com/oliverwilms/bilder/blob/main/HL7demo_HTTP_Operation.PNG)
