@@ -48,7 +48,7 @@ ClassMethod ReadFile(pFile As %String, pDebug = 0) As %String
 		If exception.%IsA("%Exception.SystemException") {
 			Do BACK^%ETN // Log error in error log
 		} Else {
-			Throw exception // We will just throw these to outer error handler
+			//Throw exception // We will just throw these to outer error handler
 		}
 		Close pFile
 	}
