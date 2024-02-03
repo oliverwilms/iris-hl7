@@ -27,7 +27,8 @@ I did not want to create separate DTLs to transform individual HL7 message forma
 
 ## Schema Validation using Embedded Python
 
-Go to webterminal
+Go to [webterminal](https://iris-hl7.demo.community.intersystems.com/terminal/) and switch to USER namespace.
+
 ```
 ZN "USER"
 ```
