@@ -8,4 +8,5 @@
     zpm "install webterminal"
     zn "USER"
     zpm "load /opt/hl7xml/app/ -v":1
+    zpm "install objectscript-json-trace-viewer"
     halt
