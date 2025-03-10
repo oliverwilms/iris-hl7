@@ -8,12 +8,12 @@
       <Packaging>module</Packaging>
       <SourcesRoot>src</SourcesRoot>
       <Resource Name="otw.PKG"/>
-      <CSPApplication
+      <WebApplication>
         Name="/hl7"
         Directory="${cspdir}/hl7"
         Url="/hl7/api"
         DispatchClass="EnsLib.HL7.Service.HTTPService"
-        MatchRoles=":${dbrole}:%All"
+        MatchRoles=":${$globalsDbRole}:%All"
         Recurse="1"
         ServeFiles="1"
         UnauthenticatedEnabled="1"
